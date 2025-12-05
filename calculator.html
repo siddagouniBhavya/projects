@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calci.css"></link>
+    <script src="calci.js" defer></script>
+</head>
+<body>
+    <div class="container" >
+        <div class="display"><p class="result"></p></div>
+        
+        <div class="r1">
+        <div class="ac" onclick="ac()"><p>AC</p></div>
+        <div class="bs" onclick="bs()"><p>BS</p></div>
+        <div class="mod" onclick="insop('%')"><p>%</p></div>
+        <div class="div" onclick="insop('/')"><p>/</p></div>
+        </div><br>
+    
+
+        <div class="r2">
+        <div class="seven" onclick="insert(7)"><p>7</p></div>
+        <div class="eigth" onclick="insert(8)"><p>8</p></div>
+        <div class="nine" onclick="insert(9)"><p>9</p></div>
+        <div class="mul" onclick="insop('*')"><p>x</p></div>
+        </div><br>
+
+        <div class="r3">
+        <div class="four" onclick="insert(4)"><p>4</p></div>
+        <div class="five" onclick="insert(5)"><p>5</p></div>
+        <div class="six" onclick="insert(6)"><p>6</p></div>
+        <div class="sub" onclick="insop('-')"><p>-</p></div>
+        </div><br>
+
+        <div class="r4">
+        <div class="one" onclick="insert(1)"><p>1</p></div>
+        <div class="two" onclick="insert(2)"><p>2</p></div>
+        <div class="three" onclick="insert(3)"><p>3</p></div>
+        <div class="add" onclick="insop('+')"><p>+</p></div>
+        </div><br>
+
+        <div class="r4">
+        <div class="zero" onclick="insert(0)"><p>0</p></div>
+        <div class="dzero" onclick="insert(0)"><p>00</p></div>
+        <div class="dot" onclick="insop('.')"><p>.</p></div>
+        <div class="equal" onclick="answer()"><p>=</p></div>
+        </div>
+
+    </div>
+    <script>
+        let show;
+let res=document.querySelector(".result");
+
+function insert(num){
+    res.innerHTML +=num;
+
+}
+
+function ac(){
+    show=document.querySelector(".result").innerHTML="";
+    
+}
+
+function insop(op){
+    let last = res.innerHTML.slice(-1);
+    if("+*%_".includes(last))
+    {
+        return ;
+    }
+    if(".".includes(last))
+    {
+        return ;
+    }
+    else{
+        res.innerHTML+=op;
+    }
+}
+ function bs(){
+   res.innerHTML=res.innerHTML.slice(0,-1);
+    
+ }
+ function answer()
+ {
+    let ans = res.innerHTML;
+    res.innerHTML="";
+    res.innerHTML=eval(ans);
+}
+    </script>
+    <style>
+        body{
+    padding:auto;
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+}
+.container
+{
+    
+    font-size: 20px;
+    border-radius: 20px;
+    height: 500px;
+    width: 290px;
+    background-color: black;
+    
+}
+.display
+{
+    
+    margin: 20px 10px 10px 10px;
+    height: 60px;
+    color: white;
+    border-radius: 10px;
+    text-align: right;
+}
+.ac,.bs,.mod,.div,.seven,.eigth,.nine,.mul,.four,.five,.six,.sub,.one,.two,.three,.add,.zero,.dzero,.dot,.equal
+{
+
+
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 10px; 
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: rgb(145, 165, 182);
+}
+ .r1,.r2,.r3,.r4{
+    text-align: center;
+    display:flex;
+    flex-direction: row;
+} 
+.ac,.bs,.mul,.mod,.div,.sub,.add,.equal
+{
+    background-color: orange;
+}
+p{
+    font-weight: bold;
+}
+    </style>
+</body>
+</html>
